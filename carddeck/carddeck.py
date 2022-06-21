@@ -28,6 +28,8 @@ if __name__ == '__main__':
     print(card_deck[0])
     print(card_deck[13])
     print(card_deck[26])
+    # breakpoint() # serve para debugar o código neste ponto via terminal
+    # pdb.set_trace() # outra forma de debugar, mais antiga faz a mesma coisa
     print(card_deck[39])
     print(card_deck[-1])
     print(card_deck.random_card())
