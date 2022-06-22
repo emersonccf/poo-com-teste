@@ -95,7 +95,7 @@ def card_deck():
     return FrenchDeck()
 
 
-def test_qtd_card_deck(card_deck):
+def test_amount_cards_in_deck(card_deck):
     """ card_deck - SUT System Under Test """
     entrada = card_deck  # dado
     esperado = 52  # dado
@@ -106,3 +106,16 @@ def test_qtd_card_deck(card_deck):
 
     # TDD - Kent Beck - One-step Test (versão resumida da anatomia do teste)
     assert len(card_deck) == 52
+
+
+@pytest.mark.parametrize(
+    'card,order',
+    [
+        (26, 0),
+        (13, 1),
+        (39, 2),
+        (0,  3),
+    ]
+)
+def test_order_of_cards_in_deck(card_deck, card, order):
+    assert FrenchDeck.order_of_card(card_deck[card]) == order
