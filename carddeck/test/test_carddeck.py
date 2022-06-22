@@ -17,6 +17,14 @@ AAA ----------------
 - Act - Acione o teste
 - Assert - Realize o a verificação do teste
 
+xUnit Patterns - Gerard Mezaros : um teste não é composto apenas de 3 etapas e
+sim de 4 passos (four steps pass)
+
+- Setup     - Dado
+- Exercise  - Quando
+- Verify    - Então
+- TearDown  - "Desmonta tudo antes que seja tarde"
+
 +================
 | Principais parâmetros do pytest na linha de comando
 +================
@@ -84,8 +92,34 @@ def test_soma_mais_2(estrada, esperado):
 # serão executados três testes distintos
 
 +----------------
-| xfail e skipif 1h23mim
+| xfail e skipif 
 +----------------
+Dizem quando:
+1- xfail: um teste deve falhar, pois é esperado que ele falhe;
+2- skipif: e quando um teste não deve ser executado;
+
+Ex. 2
+import sys
+
+@mark.skipif(
+    sys.platform == "win32",
+    reason="Não funciona no windows"
+)
+def test_soma_mais_2():
+    numero_do_pinguim = 42
+    assert soma_mais_2(numero_do_pinguim) == 42
+
+Ex. 1
+@mark.xfail() ou @mark.xfail(sys.platform == "win32")
+def test_fun():
+    pass
+
++================
+| Fixtures : uma introdução muito sutil sobre este assunto ... 1h40
++================
+Maneira de "entrar" em um contexto ou prover ferramenta ou algo que precisa ser
+executado antes e depois dos testes 
+
 
 """
 
@@ -111,10 +145,10 @@ def test_amount_cards_in_deck(card_deck):
 @pytest.mark.parametrize(
     'card,order',
     [
-        (26, 0),
+        (0,  0),
         (13, 1),
-        (39, 2),
-        (0,  3),
+        (26, 2),
+        (39, 3),
     ]
 )
 def test_order_of_cards_in_deck(card_deck, card, order):

@@ -6,7 +6,7 @@ Card = namedtuple('Card', ['rank', 'suit'])
 
 class FrenchDeck:
     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
-    suits = dict(spades=3, diamonds=1, clubs=0, hearts=2)
+    suits = dict(clubs=0, diamonds=1, hearts=2, spades=3)
 
     @classmethod
     def order_of_card(cls, card):
