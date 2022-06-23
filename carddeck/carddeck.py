@@ -26,6 +26,9 @@ class FrenchDeck:
     def random_card(self):
         return choice(self._cards)
 
+    def print_name_class_card_deck(self):
+        print(self.__class__.__name__)
+
 
 if __name__ == '__main__':
     card_deck = FrenchDeck()

@@ -2,6 +2,9 @@ import pytest
 from ..carddeck import FrenchDeck
 
 """
++================
+| Pytest: Uma introdução - Live de Python #167 Eduardo Mendes (YouTube)
++================
 Livro: Python Testing with pytest: Simple, Rapid, Effective, and Scalable
 Brian Okken
 
@@ -118,8 +121,33 @@ def test_fun():
 | Fixtures : uma introdução muito sutil sobre este assunto ... 1h40
 +================
 Maneira de "entrar" em um contexto ou prover ferramenta ou algo que precisa ser
-executado antes e depois dos testes 
+executado antes e depois dos testes.
 
+Casos de uso:
+1- Espionar a saída padrão do sistema (sys.stdout), para saber se determinada 
+saída foi enviada / exibida;
+    tipos: 
+        - capsys - monitora o stdout;
+        - tempdir - cria um diretório temporário;
+        - caplog - espiona log's;
+        - mokeypach - adiciona atributos e métodos a objetos em runtime;  
+        - etc. ...
+Ex.
+def greeting(greet):
+    print(greet)
+
+def teste_greeting_output(capsys):
+    greeting('Como vai!')
+    captured = capsys.redouterr()
+    assert captured.out == 'Como vai!\n'
+
+O grande poder do pytest está em criar nossas próprias fixtures!
+
+Moke: Dublês de teste live  Eduardo Mendes#76 - assistir depois
+
++================
+| Pytest Fixtures - Live de Python #168 Eduardo Mendes (YouTube)
++================
 
 """
 
@@ -153,3 +181,10 @@ def test_amount_cards_in_deck(card_deck):
 )
 def test_order_of_cards_in_deck(card_deck, card, order):
     assert FrenchDeck.order_of_card(card_deck[card]) == order
+
+
+def test_name_deck_card(capsys, card_deck):
+    # exemplo de fixture: capsys (monitora a saída sys.stdout)
+    card_deck.print_name_class_card_deck()
+    captured = capsys.readouterr()
+    assert captured.out == 'FrenchDeck\n'
