@@ -21,7 +21,8 @@ class Vector:
 
     def __add__(self, other):
         if type(other) is not Vector:
-            raise AddTypeDifferentError('Tentativa de somar tipos diferentes')
+            raise AddTypeDifferentError('Erro ao tentar somar: '
+                                        '%r com %r' % (self, other))
         return Vector(self.x + other.x, self.y + other.y)
 
     def __mul__(self, scalar):

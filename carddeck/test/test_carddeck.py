@@ -148,6 +148,18 @@ Moke: Dublês de teste live  Eduardo Mendes#76 - assistir depois
 +================
 | Pytest Fixtures - Live de Python #168 Eduardo Mendes (YouTube)
 +================
+Livros recomendados:
+    * Teoria geral dos teste:
+        x- Test-Driven development by Example
+        - Growing Object-Oriented Software Guided by Tests
+        - xUnit Test Pattens: Refectory Test Code
+    * sobre o Pytest:
+        - Unit Testing: Principles, Practices and Pattens 
+        x- Python Test with Pytest: Simple, Rapid, Efficient and Scalable 
+        x- Pytest Quick Start Guide, em PDF disponível na internet do brasileiro
+        que contribui com o projeto do pytest (Bruno Oliveira) - 
+        Repositório: https://github.com/PacktPublishing/pytest-Quick-Start-Guide
+
 
 """
 
